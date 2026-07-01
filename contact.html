@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Perit Lewis</title>
+<meta name="description" content="Get in touch with Perit William Lewis, architect and civil engineer.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="light-page">
+
+<header class="site-head">
+  <a href="index.html" class="logo-link" aria-label="Perit Lewis"><img class="logo logo--light" src="assets/img/logo-light.png" alt="Perit Lewis — architect and civil engineer"><img class="logo logo--dark" src="assets/img/logo-dark.png" alt="Perit Lewis — architect and civil engineer"></a>
+  <nav class="nav">
+    <a href="index.html"><span class="n-main">Home</span></a>
+    <a href="about.html"><span class="n-main">About</span><span class="n-sub">Practice / Process</span></a>
+    <a href="portfolio.html"><span class="n-main">Portfolio</span><span class="n-sub">Restoration / Residences / Structures</span></a>
+    <a href="careers.html"><span class="n-main">Careers</span></a>
+  </nav>
+  <div class="head-right">
+    <a href="contact.html" class="contact label">Contact</a>
+    <button class="menu-btn nav-toggle">Menu</button>
+  </div>
+</header>
+<div class="drawer">
+  <button class="close">Close ✕</button>
+  <a href="index.html">home</a>
+  <a href="about.html">about<span class="n-sub">Practice / Process</span></a>
+  <a href="portfolio.html">portfolio<span class="n-sub">Restoration / Residences / Structures</span></a>
+  <a href="careers.html">careers</a>
+  <a href="contact.html">contact</a>
+</div>
+
+<!-- ===================== CONTACT (light) ===================== -->
+<div class="contact-pg">
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="c-hero">
+      <div>
+        <div class="pf2-tag" style="margin-bottom:18px">[ CONTACT ]</div>
+        <h1 class="pf2-title">Contact Us</h1>
+      </div>
+      <p class="c-lead">Tell us about your project — we'd be glad to help bring it to life.</p>
+    </section>
+
+    <!-- INFO + FORM -->
+    <section class="cmain">
+      <div class="cinfo">
+        <div class="blk">
+          <h4>Office Location</h4>
+          <p>[ address — to be supplied ]</p>
+        </div>
+        <div class="blk">
+          <h4>Office Hours</h4>
+          <p>[ hours — to be supplied ]</p>
+        </div>
+        <div class="blk">
+          <h4>Get in Touch</h4>
+          <a href="mailto:[email]">[ email ]</a>
+          <a href="tel:[phone]">[ phone ]</a>
+        </div>
+      </div>
+
+      <form class="cform" onsubmit="return false">
+        <div class="field">
+          <label for="c-name">Enter your name</label>
+          <input type="text" id="c-name" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="c-email">Email address</label>
+          <input type="email" id="c-email" name="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="c-company">Company name</label>
+          <input type="text" id="c-company" name="company" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="c-web">Website</label>
+          <input type="text" id="c-web" name="website" placeholder="www.example.com">
+        </div>
+        <div class="field full">
+          <label for="c-msg">Project description</label>
+          <textarea id="c-msg" name="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-ink submit">Send enquiry <span class="arr">→</span></button>
+      </form>
+    </section>
+
+    <p class="placeholder-note" style="color:rgba(23,20,15,.55);padding-bottom:clamp(40px,7vh,80px)">Placeholder form — I'll connect it to your inbox (or a form service) once you confirm the contact details.</p>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-col"><a href="index.html" class="logo-link" aria-label="Perit Lewis"><img class="logo" src="assets/img/logo-light.png" alt="Perit Lewis — architect and civil engineer"></a></div>
+    <div class="foot-col"><h4>Contact</h4><a href="mailto:[email]">[ email ]</a><a href="tel:[phone]">[ phone ]</a><p style="color:var(--on-dark-mut)">[ address, if shown ]</p></div>
+    <div class="foot-col"><h4>Follow</h4>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v6h3v-6h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3s-2.3 1.57-2.3 3.2V21H9z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© <span id="yr"></span> Perit William Lewis. All rights reserved.</span><span>Architect &amp; Civil Engineer</span></div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

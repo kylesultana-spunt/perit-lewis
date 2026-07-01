@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+# large source originals (site uses the optimised versions)
+assets/img/Artboard*
+assets/img/_MIK*
+assets/img/DSC05911.jpg
+assets/img/maltagov-*
+assets/img/triq_marsalforn_ghawdex.jpg
+assets/img/Video/
+# archives
+*.zip

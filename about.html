@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — Perit Lewis</title>
+<meta name="description" content="About Perit William Lewis, architect and civil engineer.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a href="index.html" class="logo-link" aria-label="Perit Lewis"><img class="logo logo--light" src="assets/img/logo-light.png" alt="Perit Lewis — architect and civil engineer"><img class="logo logo--dark" src="assets/img/logo-dark.png" alt="Perit Lewis — architect and civil engineer"></a>
+  <nav class="nav">
+    <a href="index.html"><span class="n-main">Home</span></a>
+    <a href="about.html" class="active"><span class="n-main">About</span><span class="n-sub">Practice / Process</span></a>
+    <a href="portfolio.html"><span class="n-main">Portfolio</span><span class="n-sub">Restoration / Residences / Structures</span></a>
+    <a href="careers.html"><span class="n-main">Careers</span></a>
+  </nav>
+  <div class="head-right">
+    <a href="contact.html" class="contact label">Contact</a>
+    <button class="menu-btn nav-toggle">Menu</button>
+  </div>
+</header>
+<div class="drawer">
+  <button class="close">Close ✕</button>
+  <a href="index.html">home</a>
+  <a href="about.html">about<span class="n-sub">Practice / Process</span></a>
+  <a href="portfolio.html">portfolio<span class="n-sub">Restoration / Residences / Structures</span></a>
+  <a href="careers.html">careers</a>
+  <a href="contact.html">contact</a>
+</div>
+
+<!-- ABOUT HERO (masthead + collage) -->
+<section class="na-hero gridlines">
+  <div class="na-eyebrow reveal in">A little of our story</div>
+  <h1 class="na-title reveal in">Perit Lewis</h1>
+  <div class="na-collage">
+    <img class="na-img-main" src="assets/img/restoration.jpg" alt="Mediterranean Conference Centre" loading="lazy">
+    <img class="na-img-small" src="assets/img/residences.jpg" alt="Residential project" loading="lazy">
+    <div class="na-card">
+      <h3>Founded in 2003.</h3>
+      <p>Founded in 2003, Perit Lewis is a well-established architectural practice with decades of experience across a diverse range of sectors, including residential, commercial, and educational facilities, public open spaces, civic centres, promenades and roads. The firm's expertise further encompasses the restoration and conservation of historic buildings and monuments, as well as the design and installation of contemporary structures for exhibitions and conferences.</p>
+      <a href="portfolio.html" class="btn">View Portfolio <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT + TWO COLUMNS -->
+<section class="na-statement gridlines">
+  <p class="na-big reveal">Thoughtfully Designed. Beautifully Built.</p>
+  <div class="na-twocol reveal">
+    <p>Led by seasoned professionals and supported by a proactive team that embraces innovation and emerging techniques, Perit Lewis brings both extensive expertise and a forward-thinking approach to every project. With a strong track record across the public and private sectors, the practice has built a well-deserved reputation for professionalism, reliability, and effective project delivery.</p>
+    <p>The firm's dedication to quality is evidenced by its compliance with ISO 9001:2015, which upholds the highest standards across all areas of its operations. This certification reflects Perit Lewis's commitment to continual improvement through clearly defined quality objectives that benefit its clients and partners alike.</p>
+  </div>
+</section>
+
+<!-- BEHIND THE PRACTICE — text over image -->
+<section class="na-dark">
+  <img class="na-bg" src="assets/img/about-practice.jpg" alt="Perit Lewis project" loading="lazy">
+  <div class="na-dark-text">
+    <div class="na-dark-inner">
+      <div class="kicker reveal">Behind the Practice</div>
+      <h2 class="reveal">Perit Lewis</h2>
+      <p class="sub reveal">These values have earned Perit Lewis decades of trust and continue to inspire its innovative vision for the future.</p>
+      <div class="body reveal">
+        <p>This approach ensures that the firm's business goals remain firmly aligned with the quality principles that underpin its work. At Perit Lewis, quality is embedded in the practice's culture. The firm strives to build lasting relationships founded on trust, transparency, and mutual success, with clients central to everything Perit Lewis does, consistently aiming not merely to meet expectations but to exceed them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-col"><a href="index.html" class="logo-link" aria-label="Perit Lewis"><img class="logo" src="assets/img/logo-light.png" alt="Perit Lewis — architect and civil engineer"></a></div>
+    <div class="foot-col"><h4>Contact</h4><a href="mailto:[email]">[ email ]</a><a href="tel:[phone]">[ phone ]</a><p style="color:var(--on-dark-mut)">[ address, if shown ]</p></div>
+    <div class="foot-col"><h4>Follow</h4>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v6h3v-6h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3s-2.3 1.57-2.3 3.2V21H9z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© <span id="yr"></span> Perit William Lewis. All rights reserved.</span><span>Architect &amp; Civil Engineer</span></div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

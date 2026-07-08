@@ -695,8 +695,8 @@ section{position:relative}
    Gated behind .anim-ready so content is fully visible with no JS.
    =========================================================== */
 .anim-ready .reveal{opacity:0;transform:translateY(32px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1) .5s,transform 1s cubic-bezier(.16,1,.3,1) .5s;
-  will-change:opacity,transform}
+  transition:opacity 1.05s cubic-bezier(.16,1,.3,1),transform 1.05s cubic-bezier(.16,1,.3,1);
+  transition-delay:var(--rvd,0ms);will-change:opacity,transform}
 .reveal.in{opacity:1;transform:none}
 
 /* image zoom-in as the card/gallery item enters */

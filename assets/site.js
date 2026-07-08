@@ -77,9 +77,9 @@
   // let the hidden state paint first, then observe (so above-the-fold items animate too)
   requestAnimationFrame(function(){ requestAnimationFrame(startReveal); });
 
-  // ---- Apple-style scroll-linked word reveal --------------------
+  // ---- Apple-style word reveal (timed cascade on enter) ---------
   if(!reduce){
-    var groups=[];
+    var appleEls=[];
     function buildWords(sel){
       document.querySelectorAll(sel).forEach(function(el){
         if(el.dataset.appleDone || /<[a-z]/i.test(el.innerHTML)) return; // skip if inner markup
@@ -88,36 +88,27 @@
         var parts=el.textContent.split(/(\s+)/); el.textContent='';
         var words=[];
         parts.forEach(function(t){
-          if(t===''){return;}
+          if(t==='') return;
           if(/^\s+$/.test(t)){ el.appendChild(document.createTextNode(t)); }
-          else { var s=document.createElement('span'); s.className='wd'; s.textContent=t; s._o=-1; el.appendChild(s); words.push(s); }
+          else { var s=document.createElement('span'); s.className='wd'; s.textContent=t; el.appendChild(s); words.push(s); }
         });
-        if(words.length) groups.push({el:el,words:words});
+        if(words.length){ el._words=words; appleEls.push(el); }
       });
     }
     ['.cta-title','.na-big','.na-dark .sub','.pf2-lead','.c-lead',
-     '.pp-narrative p','.na-twocol p','.about-lead','.cta-intro'].forEach(buildWords);
+     '.pp-narrative p','.na-twocol p','.about-lead','.cta-intro',
+     '.pf2-title','.pp-title','.pf-title','.na-title','.job-title','.na-dark h2'].forEach(buildWords);
 
-    var ticking=false;
-    function paint(){
-      ticking=false;
-      var vh=window.innerHeight, start=vh*0.88, end=vh*0.42;
-      for(var g=0;g<groups.length;g++){
-        var grp=groups[g], r=grp.el.getBoundingClientRect();
-        if(r.bottom<-40 || r.top>vh+40) continue;
-        var p=(start - r.top)/(start-end); if(p<0)p=0; if(p>1)p=1;
-        var n=grp.words.length, lit=p*(n+2);
-        for(var i=0;i<n;i++){
-          var o=lit-i; o=o<0?0:(o>1?1:o); o=0.16+o*0.84;
-          var rounded=(o*100)|0;
-          if(grp.words[i]._o!==rounded){ grp.words[i]._o=rounded; grp.words[i].style.opacity=o; }
-        }
-      }
+    function light(el){
+      var w=el._words, n=w.length;
+      var step=Math.max(45, Math.min(120, Math.round(900/n))); // slower cascade, capped total
+      for(var i=0;i<n;i++){ w[i].style.transitionDelay=(i*step)+'ms'; w[i].style.opacity='1'; }
     }
-    function onScrollWords(){ if(!ticking){ ticking=true; requestAnimationFrame(paint); } }
-    window.addEventListener('scroll',onScrollWords,{passive:true});
-    window.addEventListener('resize',onScrollWords,{passive:true});
-    requestAnimationFrame(paint);
+    var io2=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ light(e.target); io2.unobserve(e.target); } });
+    },{threshold:0, rootMargin:'0px 0px -22% 0px'});   // start once the text is a bit into view
+    // small beat after load so the top headings ease in rather than snap
+    setTimeout(function(){ appleEls.forEach(function(el){ io2.observe(el); }); }, 180);
   }
 
   // ---- placeholder imagery -------------------------------------

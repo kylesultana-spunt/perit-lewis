@@ -77,39 +77,6 @@
   // let the hidden state paint first, then observe (so above-the-fold items animate too)
   requestAnimationFrame(function(){ requestAnimationFrame(startReveal); });
 
-  // ---- Apple-style word reveal (timed cascade on enter) ---------
-  if(!reduce){
-    var appleEls=[];
-    function buildWords(sel){
-      document.querySelectorAll(sel).forEach(function(el){
-        if(el.dataset.appleDone || /<[a-z]/i.test(el.innerHTML)) return; // skip if inner markup
-        el.dataset.appleDone='1';
-        el.classList.remove('reveal'); el.classList.add('apple-text','in');
-        var parts=el.textContent.split(/(\s+)/); el.textContent='';
-        var words=[];
-        parts.forEach(function(t){
-          if(t==='') return;
-          if(/^\s+$/.test(t)){ el.appendChild(document.createTextNode(t)); }
-          else { var s=document.createElement('span'); s.className='wd'; s.textContent=t; el.appendChild(s); words.push(s); }
-        });
-        if(words.length){ el._words=words; appleEls.push(el); }
-      });
-    }
-    ['.cta-title','.na-big','.na-dark .sub','.pf2-lead','.c-lead',
-     '.pp-narrative p','.na-twocol p','.about-lead','.cta-intro',
-     '.pf2-title','.pp-title','.pf-title','.na-title','.job-title','.na-dark h2'].forEach(buildWords);
-
-    function light(el){
-      var w=el._words, n=w.length;
-      var step=Math.max(45, Math.min(120, Math.round(900/n))); // slower cascade, capped total
-      for(var i=0;i<n;i++){ w[i].style.transitionDelay=(i*step)+'ms'; w[i].style.opacity='1'; }
-    }
-    var io2=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ light(e.target); io2.unobserve(e.target); } });
-    },{threshold:0, rootMargin:'0px 0px -22% 0px'});   // start once the text is a bit into view
-    // small beat after load so the top headings ease in rather than snap
-    setTimeout(function(){ appleEls.forEach(function(el){ io2.observe(el); }); }, 180);
-  }
 
   // ---- placeholder imagery -------------------------------------
   // Architecture photos by keyword (hot-linked from LoremFlickr).

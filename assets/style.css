@@ -716,13 +716,9 @@ section{position:relative}
 @keyframes heroZoom{from{transform:scale(1.09)}to{transform:scale(1)}}
 .anim-ready .hero .hero-bg{animation:heroZoom 16s cubic-bezier(.16,1,.3,1) both}
 
-/* Apple-style scroll-linked word reveal (text lights up as you scroll) */
-.apple-text .wd{display:inline-block;opacity:.14;transition:opacity .85s cubic-bezier(.16,1,.3,1);will-change:opacity}
-
 @media (prefers-reduced-motion: reduce){
   .anim-ready .reveal{opacity:1!important;transform:none!important}
   .anim-ready .hero .hero-bg{animation:none}
-  .apple-text .wd{opacity:1!important}
 }
 
 /* page-head (interior pages) */

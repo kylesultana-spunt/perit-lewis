@@ -13,8 +13,8 @@
   <a href="index.html" class="logo-link" aria-label="Perit Lewis"><img class="logo logo--light" src="assets/img/logo-light.png" alt="Perit Lewis — architect and civil engineer"><img class="logo logo--dark" src="assets/img/logo-dark.png" alt="Perit Lewis — architect and civil engineer"></a>
   <nav class="nav">
     <a href="index.html"><span class="n-main">Home</span></a>
-    <a href="about.html"><span class="n-main">About</span></a>
-    <a href="portfolio.html"><span class="n-main">Portfolio</span></a>
+    <a href="about.html"><span class="n-main">About</span><span class="n-sub">Practice / Process</span></a>
+    <a href="portfolio.html"><span class="n-main">Portfolio</span><span class="n-sub">Restoration / Residences / Structures</span></a>
     <a href="careers.html" class="active"><span class="n-main">Careers</span></a>
   </nav>
   <div class="head-right">
@@ -25,8 +25,8 @@
 <div class="drawer">
   <button class="close">Close ✕</button>
   <a href="index.html">home</a>
-  <a href="about.html">about</a>
-  <a href="portfolio.html">portfolio</a>
+  <a href="about.html">about<span class="n-sub">Practice / Process</span></a>
+  <a href="portfolio.html">portfolio<span class="n-sub">Restoration / Residences / Structures</span></a>
   <a href="careers.html">careers</a>
   <a href="contact.html">contact</a>
 </div>

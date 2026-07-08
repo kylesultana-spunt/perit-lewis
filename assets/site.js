@@ -55,14 +55,12 @@
   stagger('.cform','.field',60,6);
   stagger('.cinfo','.blk',70,4);
   stagger('.pf-content','.pf-list li',80,6);   // home portfolio banner list
-  ['.pf2-scroll','.pp-title','.pp-head .pp-specs','.pp-explore',
+  // NB: .pf2-title/.pp-title/.pf2-lead/.c-lead use a CSS on-load animation (see riseIn) — not tagged here
+  ['.pf2-scroll','.pp-head .pp-specs','.pp-explore',
    '.job-meta','.hero-inner','.hero-counter','.scroll-cue','.na-card',
-   '.c-lead','.statement .q','.na-dark-inner','.pf-title','.cta-block'].forEach(function(s){
+   '.statement .q','.na-dark-inner','.pf-title','.cta-block'].forEach(function(s){
     document.querySelectorAll(s).forEach(function(el){ tag(el,0); });
   });
-  // Portfolio / Careers / Contact page head: more delayed, sequenced fade-in
-  document.querySelectorAll('.pf2-title').forEach(function(el){ tag(el,300); });
-  document.querySelectorAll('.pf2-lead').forEach(function(el){ tag(el,600); });
   // job rows: start a beat later, then stagger (so the first vacancy fades in delayed too)
   document.querySelectorAll('.jobs').forEach(function(p){
     Array.prototype.forEach.call(p.querySelectorAll('.job'), function(el,i){ tag(el, 350 + Math.min(i,4)*140); });

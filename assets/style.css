@@ -699,6 +699,12 @@ section{position:relative}
   transition-delay:var(--rvd,0ms);will-change:opacity,transform}
 .reveal.in{opacity:1;transform:none}
 
+/* page-head titles + intros: CSS-driven entrance that plays on every page load / navigation */
+@keyframes riseIn{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+.pf2-title,.pp-title{animation:riseIn 1s cubic-bezier(.16,1,.3,1) both}
+.pf2-lead,.c-lead{animation:riseIn 1s cubic-bezier(.16,1,.3,1) .28s both}
+@media(prefers-reduced-motion:reduce){.pf2-title,.pp-title,.pf2-lead,.c-lead{animation:none}}
+
 /* image zoom-in as the card/gallery item enters */
 .anim-ready .pf2-card:not(.in) .pf2-frame img{transform:scale(1.14)}
 .anim-ready .pp-gallery .g:not(.in) img{transform:scale(1.14)}

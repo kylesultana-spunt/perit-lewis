@@ -345,7 +345,7 @@ section{position:relative}
   padding:calc(var(--gutter) + 116px) 0 clamp(20px,4vh,40px)}
 .pf2-title{font-weight:800;font-size:clamp(64px,13vw,210px);line-height:.82;letter-spacing:-.045em}
 .pf2-title sup{font-size:.16em;font-weight:400;vertical-align:super;margin-left:.08em}
-.pf2-intro-row{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,46px);margin-top:clamp(28px,5vh,56px);align-items:start;max-width:680px}
+.pf2-intro-row{margin-top:clamp(28px,5vh,56px);max-width:680px}
 .pf2-tag{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.12em;white-space:nowrap;padding-top:3px}
 .pf2-lead{font-size:clamp(15px,1.25vw,18px);line-height:1.6}
 .pf2-hero-right{position:relative}
@@ -622,6 +622,8 @@ section{position:relative}
 .pp-explore{display:inline-flex;align-items:center;gap:12px;margin-top:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #17140f;padding-bottom:4px}
 .pp-explore:hover{opacity:.6}
 
+.pp-narrative{padding:clamp(6px,2vh,20px) 0 clamp(30px,5vh,60px);max-width:74ch}
+.pp-narrative p{font-size:clamp(14px,1.15vw,17px);line-height:1.9;color:rgba(23,20,15,.82);margin-bottom:1.15em}
 .pp-feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center;
   padding:clamp(46px,7vh,100px) 0;border-top:1px solid rgba(23,20,15,.16)}
 @media(max-width:760px){.pp-feature{grid-template-columns:1fr;gap:30px}}

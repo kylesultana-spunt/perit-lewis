@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mediterranean Conference Centre — Perit Lewis</title>
-<meta name="description" content="Project — Mediterranean Conference Centre, a restoration project by Perit William Lewis.">
+<title>Project — Perit Lewis</title>
+<meta name="description" content="Project by Perit William Lewis, architect and civil engineer.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="light-page">
@@ -18,7 +18,7 @@
     <a href="careers.html"><span class="n-main">Careers</span></a>
   </nav>
   <div class="head-right">
-    <a href="about.html#contact" class="contact label">Contact</a>
+    <a href="contact.html" class="contact label">Contact</a>
     <button class="menu-btn nav-toggle">Menu</button>
   </div>
 </header>
@@ -28,65 +28,11 @@
   <a href="about.html">about<span class="n-sub">Practice / Process</span></a>
   <a href="portfolio.html">portfolio<span class="n-sub">Restoration / Residences / Structures</span></a>
   <a href="careers.html">careers</a>
+  <a href="contact.html">contact</a>
 </div>
 
-<!-- ===================== PROJECT DETAIL ===================== -->
-<div class="pp">
-  <div class="wrap">
-
-    <a href="portfolio.html" class="pp-back">← Portfolio</a>
-
-    <!-- HERO -->
-    <figure class="pp-hero">
-      <img src="assets/img/restoration.jpg" alt="Mediterranean Conference Centre">
-      <figcaption class="vname">Restoration</figcaption>
-      <span class="vurl">Perit Lewis — Valletta</span>
-    </figure>
-
-    <!-- TITLE + NARRATIVE + SPECS -->
-    <section class="pp-head">
-      <h1 class="pp-title">Mediterranean<br>Conference Centre</h1>
-      <div>
-        <p class="pp-narr">[ Project narrative — to be supplied. A short paragraph on the brief, the approach to restoration and conservation, and the outcome. ]</p>
-        <div class="pp-specs">
-          <div class="pp-spec"><div class="k">Client</div><div class="v">[ client ]</div></div>
-          <div class="pp-spec"><div class="k">Year</div><div class="v">[ year ]</div></div>
-          <div class="pp-spec"><div class="k">Scope</div><div class="v">[ scope ]</div></div>
-          <div class="pp-spec"><div class="k">Location</div><div class="v">Valletta, Malta</div></div>
-        </div>
-        <a href="#gallery" class="pp-explore">Explore <span class="arr">+</span></a>
-      </div>
-    </section>
-
-    <!-- FEATURE -->
-    <section class="pp-feature">
-      <div class="pp-feat-frame"><img src="assets/img/about-practice.jpg" alt="Project detail"></div>
-      <div>
-        <h2 class="pp-feat-h">Inside<br>the project</h2>
-        <div class="pp-feat-text">
-          <p>[ A second paragraph — the materials, structural and conservation challenges, and the details that define the project. To be supplied. ]</p>
-          <p>[ Optional: a note on collaborators, awards, or the project's role within the wider site. ]</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="pp-gallery" id="gallery">
-      <div class="g"><img src="assets/img/restoration.jpg" alt="" loading="lazy"></div>
-      <div class="g"><img src="assets/img/about-practice.jpg" alt="" loading="lazy"></div>
-      <div class="g"><img src="assets/img/structures.jpg" alt="" loading="lazy"></div>
-      <div class="g"><img src="assets/img/buildings.jpg" alt="" loading="lazy"></div>
-      <div class="g"><img src="assets/img/portfolio-default.jpg" alt="" loading="lazy"></div>
-      <div class="g"><img src="assets/img/residences.jpg" alt="" loading="lazy"></div>
-    </section>
-
-    <!-- BACK -->
-    <nav class="pp-next">
-      <a href="portfolio.html">← All Projects</a>
-    </nav>
-
-  </div>
-</div>
+<!-- ===================== PROJECT DETAIL (populated by JS) ===================== -->
+<div class="pp"><div class="wrap" id="ppRoot"></div></div>
 
 <!-- FOOTER -->
 <footer class="site-foot">
@@ -103,6 +49,36 @@
   <div class="foot-bottom"><span>© <span id="yr"></span> Perit William Lewis. All rights reserved.</span><span>Architect &amp; Civil Engineer</span></div>
 </footer>
 
+<script src="assets/projects-data.js"></script>
+<script>
+(function(){
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  var slug=new URLSearchParams(location.search).get('p');
+  if(!slug || !window.PROJECTS[slug]) slug=window.PROJECT_ORDER[0];
+  var p=window.PROJECTS[slug];
+  document.title=p.name+" — Perit Lewis";
+  var narr = String(p.narrative||'').split(/\n\n+/).map(function(t){return '<p>'+esc(t.trim())+'</p>';}).join('');
+  var gal = p.images.map(function(src){
+    return '<div class="g"><img src="'+src+'" alt="" loading="lazy"></div>';
+  }).join('');
+  document.getElementById('ppRoot').innerHTML =
+    '<a href="portfolio.html" class="pp-back">← Portfolio</a>'
+  + '<figure class="pp-hero"><img src="'+p.cover+'" alt="'+esc(p.name)+'">'
+  +   '<figcaption class="vname">'+esc(p.category)+'</figcaption>'
+  +   '<span class="vurl">Perit Lewis — '+esc(p.location)+'</span></figure>'
+  + '<section class="pp-head"><h1 class="pp-title">'+esc(p.name)+'</h1><div>'
+  +   '<div class="pp-specs">'
+  +     '<div class="pp-spec"><div class="k">Client</div><div class="v">'+esc(p.client)+'</div></div>'
+  +     '<div class="pp-spec"><div class="k">Year</div><div class="v">'+esc(p.year)+'</div></div>'
+  +     '<div class="pp-spec"><div class="k">Scope</div><div class="v">'+esc(p.scope)+'</div></div>'
+  +     '<div class="pp-spec"><div class="k">Location</div><div class="v">'+esc(p.location)+'</div></div>'
+  +   '</div>'
+  +   '<a href="#gallery" class="pp-explore">View gallery <span class="arr">+</span></a></div></section>'
+  + '<section class="pp-narrative">'+narr+'</section>'
+  + '<section class="pp-gallery" id="gallery">'+gal+'</section>'
+  + '<nav class="pp-next"><a href="portfolio.html">← All Projects</a></nav>';
+})();
+</script>
 <script src="assets/site.js"></script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>

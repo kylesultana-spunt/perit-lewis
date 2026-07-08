@@ -49,18 +49,25 @@
   stagger('.pf2-grid','.pf2-card',70,6);
   stagger('.pp-gallery','.g',55,8);
   stagger('.gallery','.g-item',60,6);
-  stagger('.jobs','.job',110,4);
   stagger('.stats','.stat',80,4);
   stagger('.pp-narrative','p',45,6);
   stagger('.na-twocol','p',90,2);
   stagger('.cform','.field',60,6);
   stagger('.cinfo','.blk',70,4);
   stagger('.pf-content','.pf-list li',80,6);   // home portfolio banner list
-  ['.pf2-title','.pf2-lead','.pf2-scroll','.pp-title','.pp-head .pp-specs','.pp-explore',
-   '.job-title','.job-meta','.hero-inner','.hero-counter','.scroll-cue','.na-card',
+  ['.pf2-scroll','.pp-title','.pp-head .pp-specs','.pp-explore',
+   '.job-meta','.hero-inner','.hero-counter','.scroll-cue','.na-card',
    '.c-lead','.statement .q','.na-dark-inner','.pf-title','.cta-block'].forEach(function(s){
     document.querySelectorAll(s).forEach(function(el){ tag(el,0); });
   });
+  // Portfolio / Careers / Contact page head: more delayed, sequenced fade-in
+  document.querySelectorAll('.pf2-title').forEach(function(el){ tag(el,300); });
+  document.querySelectorAll('.pf2-lead').forEach(function(el){ tag(el,600); });
+  // job rows: start a beat later, then stagger (so the first vacancy fades in delayed too)
+  document.querySelectorAll('.jobs').forEach(function(p){
+    Array.prototype.forEach.call(p.querySelectorAll('.job'), function(el,i){ tag(el, 350 + Math.min(i,4)*140); });
+  });
+  document.querySelectorAll('.job-title').forEach(function(el){ tag(el,0); });
 
   function startReveal(){
     if(!('IntersectionObserver' in window)){

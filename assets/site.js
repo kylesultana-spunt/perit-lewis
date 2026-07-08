@@ -1,32 +1,72 @@
 /* Perit Lewis — interactions */
 (function(){
-  // solid header on scroll
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce) document.documentElement.classList.add('anim-ready');
+
   var head=document.querySelector('.site-head');
+  var toggle=document.querySelector('.nav-toggle');
+  var drawer=document.querySelector('.drawer');
   var lightTop=document.body.classList.contains('light-top');
   var lightPage=document.body.classList.contains('light-page');
+
+  // header: solid on scroll + hide on scroll-down, reveal on scroll-up
+  var lastY=window.scrollY;
   function onScroll(){
     if(!head)return;
-    var solid=window.scrollY>40;
+    var y=window.scrollY, solid=y>40;
     head.classList.toggle('solid', solid);
     if(lightPage) head.classList.add('on-light');
     else if(lightTop) head.classList.toggle('on-light', !solid);
+    var drawerOpen = drawer && drawer.classList.contains('open');
+    if(!drawerOpen){
+      if(y>150 && y>lastY+3) head.classList.add('hide');
+      else if(y<lastY-3 || y<150) head.classList.remove('hide');
+    }
+    lastY=y;
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
   // mobile drawer
-  var toggle=document.querySelector('.nav-toggle');
-  var drawer=document.querySelector('.drawer');
   if(toggle&&drawer){
     toggle.addEventListener('click',function(){drawer.classList.add('open');});
     var close=drawer.querySelector('.close');
     if(close)close.addEventListener('click',function(){drawer.classList.remove('open');});
   }
 
-  // reveal on scroll
+  // ---- scroll reveal (auto-tag + stagger) ----------------------
+  function tag(el,delay){
+    if(!el) return;
+    if(delay) el.style.setProperty('--rvd', delay+'ms');
+    if(!el.classList.contains('reveal') && !el.classList.contains('in')) el.classList.add('reveal');
+  }
+  function stagger(parentSel, childSel, step, cap){
+    document.querySelectorAll(parentSel).forEach(function(p){
+      Array.prototype.forEach.call(p.querySelectorAll(childSel), function(el,i){
+        tag(el, Math.min(i,cap)*step);
+      });
+    });
+  }
+  stagger('.pf2-grid','.pf2-card',70,6);
+  stagger('.pp-gallery','.g',55,8);
+  stagger('.gallery','.g-item',60,6);
+  stagger('.jobs','.job',110,4);
+  stagger('.stats','.stat',80,4);
+  stagger('.pp-narrative','p',45,6);
+  stagger('.na-twocol','p',90,2);
+  stagger('.cform','.field',60,6);
+  stagger('.cinfo','.blk',70,4);
+  ['.pf2-title','.pf2-lead','.pf2-scroll','.pp-title','.pp-head .pp-specs','.pp-explore',
+   '.job-title','.job-meta','.hero-inner','.hero-counter','.scroll-cue','.na-card',
+   '.c-lead','.statement .q','.na-dark-inner'].forEach(function(s){
+    document.querySelectorAll(s).forEach(function(el){ tag(el,0); });
+  });
+
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.12});
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.1, rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  // hero / project-hero / behind-practice images also get the .in zoom trigger
+  document.querySelectorAll('.pp-hero,.na-dark').forEach(function(el){io.observe(el);});
 
   // ---- placeholder imagery -------------------------------------
   // Architecture photos by keyword (hot-linked from LoremFlickr).

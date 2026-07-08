@@ -78,6 +78,12 @@
       es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
     },{threshold:.08, rootMargin:'0px 0px -5% 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+    // guarantee the on-load entrance: reveal anything already in view (plays on every page switch)
+    var vh=window.innerHeight;
+    document.querySelectorAll('.reveal').forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top < vh*0.95 && r.bottom > 0){ el.classList.add('in'); io.unobserve(el); }
+    });
     // hero / project-hero / behind-practice images also get the .in zoom trigger
     document.querySelectorAll('.pp-hero,.na-dark').forEach(function(el){io.observe(el);});
   }

@@ -497,7 +497,7 @@ section{position:relative}
 /* === ABOUT — editorial (Nora layout, brand colours) === */
 .na-hero{background:var(--ink);color:var(--on-dark);text-align:center;
   padding:calc(var(--gutter) + 104px) var(--gutter) clamp(60px,9vh,120px)}
-.na-title{position:relative;z-index:3;color:var(--on-dark);font-family:var(--serif);font-weight:600;font-size:clamp(68px,13vw,188px);line-height:.9;letter-spacing:-.02em}
+.na-title{position:relative;z-index:3;color:var(--on-dark);font-family:var(--serif);font-weight:600;font-size:clamp(60px,11.4vw,140px);line-height:.9;letter-spacing:-.02em}
 .na-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);margin-bottom:clamp(16px,3vh,30px)}
 /* collage rises so the image overlaps just the base of the title */
 .na-collage{position:relative;z-index:1;max-width:1080px;margin:clamp(-58px,-3.4vw,-26px) auto 0}
@@ -740,3 +740,19 @@ section{position:relative}
 .page-head{padding:calc(var(--gutter) + 96px) var(--gutter) clamp(50px,8vh,90px)}
 .page-head h1{font-weight:300;font-size:clamp(40px,7vw,104px);letter-spacing:-.03em;line-height:.95}
 .page-head .label{margin-bottom:20px;color:var(--on-dark-mut)}
+
+/* ---- 2026-09 client changes ---- */
+/* About: all body text justified */
+.na-card p,.na-twocol p,.na-dark-text p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+/* Home: Get in Touch contact details */
+#contact{scroll-margin-top:70px}
+.cta-info{margin-top:clamp(32px,5vh,56px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vh,30px) clamp(20px,3vw,40px)}
+.cta-info h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:500;margin-bottom:8px}
+.cta-info p,.cta-info a{font-size:14px;line-height:1.7;color:var(--on-dark);display:block}
+.cta-info a:hover{color:var(--stone)}
+.cta-info .map-link{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-mut);margin-top:6px}
+@media(max-width:560px){.cta-info{grid-template-columns:1fr}}
+/* Careers: job description + apply links */
+.job-links{display:flex;flex-wrap:wrap;gap:8px 28px}
+/* About: "Perit Lewis" title never narrower than the photo beneath it */
+@media(max-width:820px){.na-title{font-size:18.6vw;white-space:nowrap}}

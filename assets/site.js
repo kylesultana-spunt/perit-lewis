@@ -93,19 +93,19 @@
   // Architecture photos by keyword (hot-linked from LoremFlickr).
   // Replace this whole block — or each .ph — with real <img>/URLs later.
   var KW={
-    restoration:'architecture,historic,stone',
-    open:'garden,landscape,park',
-    residences:'house,architecture,modern',
+    heritage:'architecture,historic,stone',
+    realm:'garden,landscape,park',
+    dwellings:'house,architecture,modern',
     infrastructure:'road,bridge,construction',
-    buildings:'building,facade,office',
-    structures:'steel,structure,construction',
+    civic:'building,facade,office',
+    installations:'steel,structure,construction',
     hero:'architecture,building,facade',
     studio:'architecture,interior,studio',
     'default':'architecture,building'
   };
   var TEXT={ // map a visible category label -> keyword
-    'restoration':'restoration','open spaces':'open','residences':'residences',
-    'infrastructure':'infrastructure','buildings':'buildings','structures':'structures'
+    'heritage':'heritage','public realm':'realm','dwellings':'dwellings',
+    'infrastructure':'infrastructure','civic':'civic','installations':'installations'
   };
   function setImg(el,url){ el.style.backgroundImage="url('"+url+"')"; }
   var lock=11;

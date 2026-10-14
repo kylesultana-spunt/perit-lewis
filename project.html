@@ -52,7 +52,7 @@
   <div class="foot-bottom"><span>© 2026 Perit Lewis. All rights reserved.</span><span>Architect &amp; Civil Engineer</span></div>
 </footer>
 
-<script src="assets/projects-data.js?v=5"></script>
+<script src="assets/projects-data.js?v=6"></script>
 <script>
 (function(){
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -66,16 +66,16 @@
   }).join('');
   document.getElementById('ppRoot').innerHTML =
     '<a href="portfolio.html" class="pp-back">← Portfolio</a>'
-  + '<figure class="pp-hero"><img src="'+p.cover+'" alt="'+esc(p.name)+'">'
+  + (p.cover ? '<figure class="pp-hero"><img src="'+p.cover+'" alt="'+esc(p.name)+'">'
   +   '<figcaption class="vname">'+esc(p.category)+'</figcaption>'
-  +   '<span class="vurl">Perit Lewis — '+esc(p.location)+'</span></figure>'
+  +   '<span class="vurl">Perit Lewis'+(p.location?' — '+esc(p.location):'')+'</span></figure>' : '')
   + '<section class="pp-head"><h1 class="pp-title">'+esc(p.name)+'</h1><div>'
   +   '<div class="pp-specs">'
-  +     '<div class="pp-spec"><div class="k">Client</div><div class="v">'+esc(p.client)+'</div></div>'
-  +     '<div class="pp-spec"><div class="k">Year</div><div class="v">'+esc(p.year)+'</div></div>'
-  +     '<div class="pp-spec"><div class="k">Location</div><div class="v">'+esc(p.location)+'</div></div>'
+  +     (p.client ? '<div class="pp-spec"><div class="k">Client</div><div class="v">'+esc(p.client)+'</div></div>' : '')
+  +     (p.year ? '<div class="pp-spec"><div class="k">Year</div><div class="v">'+esc(p.year)+'</div></div>' : '')
+  +     (p.location ? '<div class="pp-spec"><div class="k">Location</div><div class="v">'+esc(p.location)+'</div></div>' : '')
   +   '</div>'
-  +   '<a href="#gallery" class="pp-explore">View gallery <span class="arr">+</span></a></div></section>'
+  +   (p.images.length ? '<a href="#gallery" class="pp-explore">View gallery <span class="arr">+</span></a>' : '')+'</div></section>'
   + '<section class="pp-narrative">'+narr+'</section>'
   + '<section class="pp-gallery" id="gallery">'+gal+'</section>'
   + '<nav class="pp-next"><a href="portfolio.html">← All Projects</a></nav>';

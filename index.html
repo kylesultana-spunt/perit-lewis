@@ -39,9 +39,20 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="hero-media">
-    <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg">
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
+    <video class="hero-bg" autoplay muted loop playsinline preload="auto"></video>
+    <script>
+    (function(){
+      /* vertical film on portrait screens (phones), wide film everywhere else */
+      var v=document.currentScript.previousElementSibling, mq=matchMedia('(max-aspect-ratio: 1/1)');
+      function pick(){
+        var k=mq.matches?'mobile':'desktop', src='assets/video/hero-'+k+'.mp4';
+        if(v.getAttribute('src')===src) return;
+        v.poster='assets/video/hero-'+k+'-poster.jpg'; v.src=src; v.load();
+        var p=v.play(); if(p&&p.catch) p.catch(function(){});
+      }
+      pick(); (mq.addEventListener?mq.addEventListener('change',pick):mq.addListener(pick));
+    })();
+    </script>
   </div>
   <a class="hero-chevron" href="#pf" aria-label="Scroll down">
     <svg width="40" height="22" viewBox="0 0 28 16" aria-hidden="true"><path d="M2 3 L14 13 L26 3"/></svg>

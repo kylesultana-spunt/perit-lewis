@@ -7,7 +7,7 @@
 <meta name="description" content="Perit William Lewis — architecture and civil engineering. Heritage, dwellings, civic, public realm, infrastructure and installations.">
 <!-- KALLISTO: when licensed, add the Adobe Fonts kit here, e.g.
      <link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css"> -->
-<link rel="stylesheet" href="assets/style.css?v=5">
+<link rel="stylesheet" href="assets/style.css?v=6">
 </head>
 <body>
 
@@ -54,6 +54,21 @@
     })();
     </script>
   </div>
+  <button class="hero-sound" type="button" aria-pressed="false" aria-label="Turn sound on">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w-on" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/><path class="w-off" d="M16 9l5 6M21 9l-5 6"/></svg>
+    <span class="lbl">Sound on</span>
+  </button>
+  <script>
+  (function(){
+    var b=document.querySelector('.hero-sound'), v=document.querySelector('.hero-bg');
+    b.addEventListener('click',function(){
+      v.muted=!v.muted; if(!v.muted){ v.volume=1; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+      b.classList.toggle('on',!v.muted); b.setAttribute('aria-pressed',String(!v.muted));
+      b.setAttribute('aria-label',v.muted?'Turn sound on':'Turn sound off');
+      b.querySelector('.lbl').textContent=v.muted?'Sound on':'Sound off';
+    });
+  })();
+  </script>
   <a class="hero-chevron" href="#pf" aria-label="Scroll down">
     <svg width="40" height="22" viewBox="0 0 28 16" aria-hidden="true"><path d="M2 3 L14 13 L26 3"/></svg>
   </a>

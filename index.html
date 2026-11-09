@@ -117,10 +117,13 @@
     </div>
     <div class="reveal">
       <p class="cta-intro">Every great project starts with a conversation. Let's talk.</p>
-      <form class="lead-form" onsubmit="return false">
+      <form class="lead-form" id="lead-form" action="https://formsubmit.co/info@peritwilliamlewis.com" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry from peritwilliamlewis.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field">
           <label for="f-name">Your name</label>
-          <input type="text" id="f-name" name="name" autocomplete="name">
+          <input type="text" id="f-name" name="name" autocomplete="name" required>
         </div>
         <div class="field">
           <label for="f-phone">Your phone</label>
@@ -128,14 +131,21 @@
         </div>
         <div class="field">
           <label for="f-email">Your email</label>
-          <input type="email" id="f-email" name="email" autocomplete="email">
+          <input type="email" id="f-email" name="email" autocomplete="email" required>
         </div>
         <div class="field">
           <label for="f-msg">Your message</label>
-          <textarea id="f-msg" name="message" rows="3"></textarea>
+          <textarea id="f-msg" name="message" rows="3" required></textarea>
         </div>
         <button type="submit" class="form-submit">Send enquiry <span class="arr">→</span></button>
       </form>
+      <script>
+      (function(){var f=document.getElementById('lead-form');if(!f)return;var b=f.querySelector('.form-submit'),t=b.innerHTML;
+      f.addEventListener('submit',function(e){e.preventDefault();b.disabled=true;b.textContent='Sending…';
+      fetch('https://formsubmit.co/ajax/info@peritwilliamlewis.com',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
+      .then(function(r){return r.json()}).then(function(d){if(d.success==='false'||d.success===false)throw 0;f.reset();b.textContent='Message sent';setTimeout(function(){b.disabled=false;b.innerHTML=t},5000)})
+      .catch(function(){b.disabled=false;b.textContent='Not sent, please try again';setTimeout(function(){b.innerHTML=t},4000)})})})();
+      </script>
     </div>
   </div>
 </section>
